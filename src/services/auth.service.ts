@@ -14,19 +14,6 @@ import { capitalizeAll } from "../utils/capitalize";
 
 export class AuthService {
   private JWT_SECRET = process.env.JWT_SECRET ?? "default_secret";
-  private JWT_EXPIRES_IN = "60m";
-
-  private verifyToken(token: string) {
-    try {
-      return jwt.verify(token, this.JWT_SECRET);
-    } catch (error) {
-      if (!isError(error)) {
-        throw new BadRequestError(
-          `Erro desconhecido ao verificar o token de acesso.`
-        );
-      }
-    }
-  }
 
   public async signIn(data: SignInDto) {
     const { email, password } = data;
