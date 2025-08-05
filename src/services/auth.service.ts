@@ -12,7 +12,7 @@ import { isValidName } from "../utils/valid-name";
 import { isValidPassword } from "../utils/valid-password";
 
 export class AuthService {
-  private JWT_SECRET = process.env.JWT_SECRET ?? "default_secret";
+  private JWT_SECRET = process.env.JWT_SECRET ?? "000000000000000";
 
   public async signIn(data: SignInDto) {
     const { email, password } = data;

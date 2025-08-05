@@ -1,8 +1,11 @@
 import { Router } from "express";
+import { authenticateJwt } from "../middlewares/jwt.middleware";
 import { UserService } from "../services/user.service";
 
 const router = Router();
 const service = new UserService();
+
+router.use(authenticateJwt);
 
 router.get("/", async (req, res) => {
   const users = await service.getAll();
