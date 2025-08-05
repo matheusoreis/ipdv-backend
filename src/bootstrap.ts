@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { Request, Response, NextFunction } from "express";
+import express, { NextFunction, Request, Response } from "express";
 import authRoutes from "./routes/auth.routes";
 import rolesRoutes from "./routes/roles.routes";
 import usersRoutes from "./routes/users.routes";

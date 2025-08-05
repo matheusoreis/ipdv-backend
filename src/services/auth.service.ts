@@ -1,16 +1,15 @@
 import bcrypt from "bcrypt";
-import jwt, { SignOptions } from "jsonwebtoken";
-import { isError } from "../utils/valid-error";
-import { BadRequestError } from "../errors/bad-request";
-import { SignInDto, SignUpDto } from "../dtos/auth.dto";
+import jwt from "jsonwebtoken";
 import postgres from "../database/connectors/pg";
 import { UserEntity } from "../database/entities/user.entity";
+import { SignInDto, SignUpDto } from "../dtos/auth.dto";
+import { BadRequestError } from "../errors/bad-request";
 import { NotFoundError } from "../errors/not-found";
 import { UnauthorizedError } from "../errors/unauthorized";
-import { isValidEmail } from "../utils/valid-email";
-import { isValidPassword } from "../utils/valid-password";
-import { isValidName } from "../utils/valid-name";
 import { capitalizeAll } from "../utils/capitalize";
+import { isValidEmail } from "../utils/valid-email";
+import { isValidName } from "../utils/valid-name";
+import { isValidPassword } from "../utils/valid-password";
 
 export class AuthService {
   private JWT_SECRET = process.env.JWT_SECRET ?? "default_secret";
