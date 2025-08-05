@@ -1,4 +1,8 @@
-export function capitalizeAll(text: string): string {
+export function capitalizeAll(text?: string | null): string {
+  if (!text || typeof text !== "string") {
+    return "";
+  }
+
   return text
     .trim()
     .split(/\s+/)
