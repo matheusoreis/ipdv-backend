@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx index.ts",
+    "dev": "tsx watch index.ts",
+    "format": "prettier --write .",
+    "db:up": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production migrate:latest",
+    "db:make": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production migrate:make"
   },
   "repository": {
     "type": "git",
@@ -19,15 +23,18 @@
   "description": "",
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+    "express": "^5.1.0",
     "knex": "^3.1.0",
     "pg": "^8.16.3"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
     "@types/node": "^24.1.0",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
   }
-  
 }
