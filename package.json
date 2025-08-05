@@ -1,13 +1,14 @@
 {
   "name": "ipdv-backend",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "start": "tsx index.ts",
     "dev": "tsx watch index.ts",
     "format": "prettier --write .",
     "db:up": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production migrate:latest",
-    "db:make": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production migrate:make"
+    "db:make": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production migrate:make",
+    "db:seed:make": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production seed:make",
+    "db:seed:up": "tsx --no-warnings ./node_modules/knex/bin/cli.js --knexfile knexfile.ts --env production seed:run"
   },
   "repository": {
     "type": "git",
