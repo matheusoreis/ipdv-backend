@@ -85,12 +85,14 @@ export class UserService {
 
     if (data.email) {
       const checkEmailQuery = `
-      SELECT id FROM users WHERE LOWER(email) = LOWER(?) AND id <> ? LIMIT 1
-    `;
+        SELECT id FROM users WHERE LOWER(email) = LOWER(?) AND id <> ? LIMIT 1
+      `;
+
       const emailExists = await postgres.raw(checkEmailQuery, [
         updatedEmail,
         id,
       ]);
+
       if (emailExists.rows.length > 0) {
         throw new BadRequestError("Já existe um usuário com este email.");
       }
@@ -100,11 +102,11 @@ export class UserService {
     updatedEmail = updatedEmail.toLowerCase();
 
     const query = `
-    UPDATE users
-    SET name = ?, email = ?, "roleId" = ?, "isActive" = ?, "updatedAt" = NOW()
-    WHERE id = ?
-    RETURNING *;
-  `;
+      UPDATE users
+      SET name = ?, email = ?, "roleId" = ?, "isActive" = ?, "updatedAt" = NOW()
+      WHERE id = ?
+      RETURNING *;
+    `;
 
     const result = await postgres.raw(query, [
       updatedName,
