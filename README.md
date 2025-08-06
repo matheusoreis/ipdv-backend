@@ -18,7 +18,7 @@ API construída com **Node.js**, **Express** e **PostgreSQL** com autenticação
 
 ```bash
 git clone https://github.com/matheusoreis/ipdv-backend
-cd seu-repo
+cd ipdv-backend
 ```
 
 ### Instalar as dependências
