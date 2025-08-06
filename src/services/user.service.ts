@@ -10,11 +10,11 @@ import { isValidName } from "../utils/valid-name";
 export class UserService {
   public async getAll(): Promise<UserEntity[]> {
     const query = `
-      SELECT u.*, r.name
-      FROM users u
-      LEFT JOIN roles r ON u."roleId" = r.id
-      ORDER BY u.id ASC
-    `;
+    SELECT u.*, r.name AS "roleName"
+    FROM users u
+    LEFT JOIN roles r ON u."roleId" = r.id
+    ORDER BY u.id ASC
+  `;
     const result = await postgres.raw(query);
     return result.rows;
   }
